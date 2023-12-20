@@ -21,7 +21,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { TranslateService } from '@ngx-translate/core';
 import { cloneDeep } from 'lodash-es';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BehaviorSubject, isObservable, Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, isObservable, of } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { ApiService } from '../../api/api.service';
 import { Error } from '../../error/error';
@@ -31,7 +31,6 @@ import { Aggregation, Record, SearchField, SearchFilter, SearchFilterSection, Se
 import { RecordUiService } from '../record-ui.service';
 import { RecordService } from '../record.service';
 import { AggregationsFilter, RecordSearchService } from './record-search.service';
-import { createTrue } from 'typescript';
 
 export interface SearchParams {
   currentType: string;
@@ -813,6 +812,8 @@ export class RecordSearchComponent implements OnInit, OnChanges, OnDestroy {
    * @param size - number : force the number of records to return. If `null` the default component `size` attribute will be used.
    */
   private _getRecords(size: number = null): Observable<any> {
+    // Clear result hits
+    this.hits = [];
     // Build query string
     const q = this._buildQueryString();
 
