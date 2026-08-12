@@ -94,6 +94,8 @@ export function withSearchParams() {
 
       /** Check if any search filters are available */
       hasSearchFilters: computed(() => (store.searchFilters() ?? []).length > 0),
+
+      hasAggregationFilers: computed(() => store.aggregationsFilters().length > 0)
     })),
     withMethods((store) => ({
       syncUrlParams: rxMethod<Partial<SearchParams>>(
@@ -117,10 +119,10 @@ export function withSearchParams() {
         patchState(store, { page });
       },
       updateSearchFilters(searchFilters: (SearchFilter | SearchFilterSection)[]) {
-        patchState(store, { searchFilters });
+        patchState(store, { searchFilters, page: 1 });
       },
       clearSearchFilters(): void {
-        patchState(store, { searchFilters: [] });
+        patchState(store, { searchFilters: [], page: 1 });
       },
       updateSize(size: number) {
         patchState(store, { size });
@@ -155,7 +157,7 @@ export function withSearchParams() {
         } else {
           newFilters = [...currentFilters, { key, values: [...values].sort() }];
         }
-        patchState(store, { aggregationsFilters: newFilters });
+        patchState(store, { aggregationsFilters: newFilters, page: 1 });
       },
 
       /**
@@ -165,6 +167,7 @@ export function withSearchParams() {
       updateAggregationsFilters(filters: AggregationsFilter[]): void {
         patchState(store, {
           aggregationsFilters: filters.map((f) => ({ key: f.key, values: [...f.values].sort() })),
+          page: 1,
         });
       },
 
@@ -174,7 +177,7 @@ export function withSearchParams() {
        */
       removeFilter(key: string): void {
         const newFilters = store.aggregationsFilters().filter((f) => f.key !== key);
-        patchState(store, { aggregationsFilters: newFilters });
+        patchState(store, { aggregationsFilters: newFilters, page: 1 });
       },
 
       /**
@@ -196,7 +199,7 @@ export function withSearchParams() {
        * Clear all aggregations filters
        */
       clearFilters(): void {
-        patchState(store, { aggregationsFilters: [] });
+        patchState(store, { aggregationsFilters: [], page: 1 });
       },
       /**
        * Check if a given filter exists in the current aggregations filters
@@ -222,7 +225,7 @@ export function withSearchParams() {
           ...collectParentRemovals(bucket),
         ];
         const newFilters = applyRemovals(store.aggregationsFilters(), removals);
-        patchState(store, { aggregationsFilters: newFilters });
+        patchState(store, { aggregationsFilters: newFilters, page: 1 });
       },
 
       /**
@@ -232,7 +235,7 @@ export function withSearchParams() {
       removeParentFilters(bucket: Bucket): void {
         const removals = collectParentRemovals(bucket);
         const newFilters = applyRemovals(store.aggregationsFilters(), removals);
-        patchState(store, { aggregationsFilters: newFilters });
+        patchState(store, { aggregationsFilters: newFilters, page: 1 });
       },
 
       /**
@@ -242,7 +245,7 @@ export function withSearchParams() {
       removeChildrenFilters(bucket: Bucket): void {
         const removals = collectChildrenRemovals(bucket);
         const newFilters = applyRemovals(store.aggregationsFilters(), removals);
-        patchState(store, { aggregationsFilters: newFilters });
+        patchState(store, { aggregationsFilters: newFilters, page: 1 });
       },
 
       /**

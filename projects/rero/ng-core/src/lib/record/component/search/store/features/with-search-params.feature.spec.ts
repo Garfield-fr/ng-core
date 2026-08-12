@@ -182,6 +182,15 @@ describe('withSearchParams', () => {
 
       expect(store.searchFilters()).toEqual(updated);
     });
+
+    it('should reset page to 1 when updating search filters', () => {
+      const store = TestBed.inject(TestStore);
+      store.updatePage(5);
+
+      store.updateSearchFilters([{ filter: 'test', label: 'Test', value: 'val', showIfQuery: false }]);
+
+      expect(store.page()).toBe(1);
+    });
   });
 
   describe('clearSearchFilters', () => {
@@ -193,6 +202,16 @@ describe('withSearchParams', () => {
 
       expect(store.searchFilters()).toEqual([]);
       expect(store.hasSearchFilters()).toBe(false);
+    });
+
+    it('should reset page to 1 when clearing search filters', () => {
+      const store = TestBed.inject(TestStore);
+      store.updateSearchFilters([{ filter: 'test', label: 'Test', value: 'val', showIfQuery: false }]);
+      store.updatePage(5);
+
+      store.clearSearchFilters();
+
+      expect(store.page()).toBe(1);
     });
   });
 
