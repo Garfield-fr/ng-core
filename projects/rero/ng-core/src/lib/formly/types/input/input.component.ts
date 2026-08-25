@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Fondation RERO+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
+import { Component, Type } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldType, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { InputGroup } from 'primeng/inputgroup';
-import { InputGroupAddon } from 'primeng/inputgroupaddon';
-import { InputNumber } from 'primeng/inputnumber';
-import { InputText } from 'primeng/inputtext';
+import { InputGroup } from '@openng/optimus-ui/inputgroup';
+import { InputGroupAddon } from '@openng/optimus-ui/inputgroupaddon';
+import { InputNumber } from '@openng/optimus-ui/inputnumber';
+import { InputText } from '@openng/optimus-ui/inputtext';
 
 export interface NgCoreFormlyInputFieldConfig extends FormlyFieldConfig {
   type: 'input' | Type<InputComponent>;
@@ -21,7 +21,7 @@ export interface NgCoreFormlyInputFieldConfig extends FormlyFieldConfig {
 }
 
 @Component({
-  selector: 'ng-core-formly-field-primeng-input',
+  selector: 'ng-core-formly-field-optimus-ui-input',
   template: `
     @if (props.addonLeft || props.addonRight) {
       <p-inputgroup>
@@ -66,7 +66,6 @@ export interface NgCoreFormlyInputFieldConfig extends FormlyFieldConfig {
       }
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     InputGroup,
     InputGroupAddon,

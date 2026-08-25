@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: Fondation RERO+
 // SPDX-License-Identifier: AGPL-3.0-or-later
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Type, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Type, viewChild } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/primeng/form-field';
 import { FormlyFieldTextArea } from '@ngx-formly/primeng/textarea';
 import EasyMDE from 'easymde';
 import { NgClass } from '@angular/common';
-import { Textarea } from 'primeng/textarea';
+import { Textarea } from '@openng/optimus-ui/textarea';
 
 interface TextAreaProps extends FormlyFieldProps {
   maxHeight?: string;
@@ -33,7 +33,6 @@ export interface FormlyTextAreaFieldConfig extends FormlyFieldConfig<TextAreaPro
     </div>
   `,
   imports: [NgClass, Textarea],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MarkdownFieldComponent extends FieldType<FieldTypeConfig<TextAreaProps>> implements AfterViewInit {
   // Reference to textarea element.

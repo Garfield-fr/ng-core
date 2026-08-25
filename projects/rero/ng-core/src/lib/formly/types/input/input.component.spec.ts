@@ -16,7 +16,7 @@ const renderComponent = (field: NgCoreFormlyInputFieldConfig) => {
   });
 };
 
-describe('ui-primeng: NgCore Input Type', () => {
+describe('ui-optimus-ui: NgCore Input Type', () => {
   it('should render input type with addon', () => {
     const { query } = renderComponent({
       key: 'name',

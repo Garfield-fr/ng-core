@@ -9,7 +9,7 @@ export * from './pipe/markdown/markdown.pipe';
 export * from './pipe/callback-array-filter/callback-array-filter.pipe';
 export * from './validator/time.validator';
 export * from './validator/unique.validator';
-export * from './config/primeng-config';
+export * from './config/optimus-ui-config';
 export * from './config/config';
 export * from './component/read-more/read-more.component';
 export * from './component/dialog/dialog.component';

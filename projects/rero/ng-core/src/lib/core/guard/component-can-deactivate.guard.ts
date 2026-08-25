@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Fondation RERO+
 // SPDX-License-Identifier: AGPL-3.0-or-later
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { AbstractCanDeactivateComponent } from '../component/abstract-can-deactivate/abstract-can-deactivate.component';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from '@openng/optimus-ui/dynamicdialog';
 import { DialogComponent } from '../component/dialog/dialog.component';
 
 /**
@@ -28,7 +28,7 @@ import { DialogComponent } from '../component/dialog/dialog.component';
  * ></ng-core-editor>
  */
 
-@Injectable()
+@Service({ autoProvided: false })
 export class ComponentCanDeactivateGuard {
   protected translateService: TranslateService = inject(TranslateService);
   protected dialogService: DialogService = inject(DialogService);

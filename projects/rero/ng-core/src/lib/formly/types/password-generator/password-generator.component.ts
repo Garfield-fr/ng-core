@@ -4,7 +4,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { NgClass } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   inject,
@@ -18,10 +17,10 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/primeng/form-field';
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 import { GeneratePassword } from 'generate-password-lite';
-import { Button } from 'primeng/button';
-import { InputGroup } from 'primeng/inputgroup';
-import { InputGroupAddon } from 'primeng/inputgroupaddon';
-import { InputText } from 'primeng/inputtext';
+import { Button } from '@openng/optimus-ui/button';
+import { InputGroup } from '@openng/optimus-ui/inputgroup';
+import { InputGroupAddon } from '@openng/optimus-ui/inputgroupaddon';
+import { InputText } from '@openng/optimus-ui/inputtext';
 
 /**
  * Available options for generateOptions (GeneratePassword):
@@ -77,7 +76,6 @@ interface PasswordGeneratorProps extends FormlyFieldProps {
 
 @Component({
   selector: 'ng-core-editor-field-password-generator',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: `
     p-inputGroupAddon {
       padding: 0 !important;

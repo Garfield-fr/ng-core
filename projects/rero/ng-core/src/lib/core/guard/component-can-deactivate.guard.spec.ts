@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 import { TestBed } from '@angular/core/testing';
 
-import { TranslateModule } from '@ngx-translate/core';
-import { DialogService } from 'primeng/dynamicdialog';
+import { provideTranslateService } from '@ngx-translate/core';
+import { DialogService } from '@openng/optimus-ui/dynamicdialog';
 import { AbstractCanDeactivateComponent } from '../component/abstract-can-deactivate/abstract-can-deactivate.component';
 import { ComponentCanDeactivateGuard } from './component-can-deactivate.guard';
 import { DialogComponent } from '../component/dialog/dialog.component';
@@ -18,8 +18,13 @@ describe('ComponentCanDeactivateGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      providers: [MockComponent, ComponentCanDeactivateGuard, DialogService, DialogComponent],
+      providers: [
+        MockComponent,
+        ComponentCanDeactivateGuard,
+        DialogService,
+        DialogComponent,
+        provideTranslateService(),
+      ],
     });
     guard = TestBed.inject(ComponentCanDeactivateGuard);
     component = TestBed.inject(MockComponent);

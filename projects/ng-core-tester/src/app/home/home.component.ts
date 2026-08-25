@@ -12,9 +12,9 @@ import {
   TranslateLanguagePipe,
 } from '@rero/ng-core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Button } from 'primeng/button';
-import { InputText } from 'primeng/inputtext';
-import { Panel } from 'primeng/panel';
+import { Button } from '@openng/optimus-ui/button';
+import { InputText } from '@openng/optimus-ui/inputtext';
+import { Panel } from '@openng/optimus-ui/panel';
 import { DocumentComponent } from '../record/document/document.component';
 import { AppDialogComponent } from './dialog/app-dialog.component';
 import { SelectDialogComponent } from './select-dialog/select-dialog.component';

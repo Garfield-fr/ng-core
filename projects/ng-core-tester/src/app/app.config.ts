@@ -7,12 +7,16 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideTranslateLoader, provideTranslateService, TranslateService } from '@ngx-translate/core';
 import {
-  CoreConfigService, httpPendingInterceptor, NgCoreTranslateService, primeNGConfig,
+  CoreConfigService,
+  httpPendingInterceptor,
+  NgCoreTranslateService,
+  optimusUIConfig,
   provideCore,
   RecordService,
-  RemoteAutocompleteService, TranslateLanguageService
+  RemoteAutocompleteService,
+  TranslateLanguageService,
 } from '@rero/ng-core';
-import { providePrimeNG } from 'primeng/config';
+import { provideOptimus } from '@openng/optimus-ui/config';
 import { AppConfigService } from './app-config.service';
 import { AppTranslateLoader } from './app-translate-loader';
 import { AppTranslateService } from './app-translate.service';
@@ -35,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     { provide: NgCoreTranslateService, useExisting: AppTranslateService },
     { provide: TranslateLanguageService, useExisting: AppTranslateLanguageService },
     provideAnimations(),
-    providePrimeNG(primeNGConfig),
+    provideOptimus(optimusUIConfig),
     {
       provide: CoreConfigService,
       useExisting: AppConfigService,
